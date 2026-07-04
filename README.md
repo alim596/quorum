@@ -1,5 +1,8 @@
 # QUORUM
 
+[![CI](https://github.com/alim596/quorum/actions/workflows/ci.yml/badge.svg)](https://github.com/alim596/quorum/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 **Raft consensus, implemented from scratch — with a browser chaos lab where you break the cluster and watch it heal.**
 
 Quorum is a distributed key-value store built on the Raft consensus algorithm
@@ -17,19 +20,7 @@ live lab runs under a **deterministic simulation harness** — seeded chaos sche
 thousands of ticks, machine-checked safety invariants. A failing seed replays
 identically, every time.
 
-```
-        ┌──────────────────────────────────────────────────────────┐
-        │  QUORUM   raft consensus · chaos lab      LEADER n4 (t3) │
-        ├──────────────────────────────────────────┬───────────────┤
-        │                 ○ n1                     │ CHAOS         │
-        │        ○ n5            ● n4 LEADER       │ isolate leader│
-        │           ·(msg)· ·-·(msg)··             │ split 2|3     │
-        │        ○ n3 ✕          ○ n2              │ loss ▁▂▃ 12%  │
-        │       [██▒▒░]         [████░]            │ PUT color=teal│
-        ├──────────────────────────────────────────┴───────────────┤
-        │ n1 follower ✓ in sync   ·   t661 elected: node 4 (term 3)│
-        └──────────────────────────────────────────────────────────┘
-```
+![The Quorum chaos lab: five-node cluster with n4 leading in term 3, heartbeats in flight, per-node log bars, replica convergence matrix, and the crash/failover history in the event log](docs/lab.png)
 
 ## Why this exists
 
