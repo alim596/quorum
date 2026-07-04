@@ -218,7 +218,10 @@ func (c *Cluster) Statuses() []raft.Status {
 			s := n.Status()
 			out = append(out, s)
 		} else {
-			out = append(out, raft.Status{ID: id, Role: "down", VotedFor: -1, Leader: -1})
+			out = append(out, raft.Status{
+				ID: id, Role: "down", VotedFor: -1, Leader: -1,
+				LogTerms: []uint64{},
+			})
 		}
 	}
 	return out
