@@ -1,0 +1,17 @@
+# Go
+server/bin/
+server/data/
+*.exe
+*.test
+*.out
+
+# Node
+node_modules/
+lab/dist/
+*.local
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
